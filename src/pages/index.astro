@@ -1,0 +1,65 @@
+---
+import Site from '../layouts/Site.astro';
+import pricing from '../data/pricing.json';
+const products = pricing.products;
+---
+
+<Site title="Cortex — AI vertical products for real work">
+	<section style="padding: 3rem 0 2rem; text-align: center;">
+		<h1 style="font-size: 2.6rem; line-height: 1.15; letter-spacing: -0.03em;">
+			AI assistants that run a practice,<br />not just a chat window.
+		</h1>
+		<p style="max-width: 38rem; margin: 1.25rem auto 0; color: var(--muted); font-size: 1.15rem;">
+			Cortex products are domain systems: every action permission-checked before the model sees a
+			tool, every write approval-gated, every call audited. The AI does the work; you keep control.
+		</p>
+		<div style="margin-top: 2rem; display: flex; gap: 0.75rem; justify-content: center;">
+			<a class="btn" href="/pricing">See pricing</a>
+			<a class="btn ghost" href="/docs/the-lawyer/getting-started">Read the docs</a>
+		</div>
+	</section>
+
+	<section style="margin-top: 3rem;">
+		<h2 style="font-size: 1.4rem;">Products</h2>
+		<div style="display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); margin-top: 1rem;">
+			{products.map((p) => (
+				<a
+					href={`/products/${p.id}`}
+					style="border: 1px solid var(--line); border-radius: 0.75rem; padding: 1.5rem; text-decoration: none; color: inherit; display: block;"
+				>
+					<h3 style="font-size: 1.15rem;">{p.name}</h3>
+					<p style="color: var(--muted); margin-top: 0.5rem; font-size: 0.95rem;">{p.tagline}</p>
+				</a>
+			))}
+			<div style="border: 1px dashed var(--line); border-radius: 0.75rem; padding: 1.5rem; color: var(--muted);">
+				<h3 style="font-size: 1.15rem;">Your vertical</h3>
+				<p style="margin-top: 0.5rem; font-size: 0.95rem;">
+					Every product is its own system on the same platform — new verticals inherit the whole
+					security spine on day one.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section style="margin-top: 3.5rem;">
+		<h2 style="font-size: 1.4rem;">Why teams trust it</h2>
+		<div style="display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); margin-top: 1rem;">
+			<div>
+				<h3 style="font-size: 1rem;">Security before the model</h3>
+				<p style="color: var(--muted); font-size: 0.95rem;">The model never sees a tool the signed-in user may not call. Writes wait for human approval.</p>
+			</div>
+			<div>
+				<h3 style="font-size: 1rem;">Everything audited</h3>
+				<p style="color: var(--muted); font-size: 0.95rem;">Every tool call, every permission change, every token — in an append-only trail your admins can read.</p>
+			</div>
+			<div>
+				<h3 style="font-size: 1rem;">Your keys, your budget</h3>
+				<p style="color: var(--muted); font-size: 0.95rem;">Use metered AI with a hard monthly cap, or bring your own provider key — switchable at runtime.</p>
+			</div>
+			<div>
+				<h3 style="font-size: 1rem;">Isolation on your terms</h3>
+				<p style="color: var(--muted); font-size: 0.95rem;">From a private tenant to your own dedicated Azure environment, provisioned automatically.</p>
+			</div>
+		</div>
+	</section>
+</Site>

@@ -1,0 +1,44 @@
+---
+import Site from '../layouts/Site.astro';
+import pricing from '../data/pricing.json';
+// One JSON drives every pricing page; checkout buttons will deep-link to Stripe Checkout once
+// each tier's stripePriceId is set (the webhook then provisions the tenant automatically).
+const products = pricing.products;
+---
+
+<Site title="Pricing — Cortex">
+	{products.map((product) => (
+		<section>
+			<h1 style="font-size: 2rem; letter-spacing: -0.02em;">{product.name} pricing</h1>
+			<p style="color: var(--muted); max-width: 40rem; margin-top: 0.5rem;">{product.tagline}</p>
+
+			<div style="display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); margin-top: 2rem; align-items: stretch;">
+				{product.tiers.map((tier) => (
+					<div
+						style={`border: 1px solid ${tier.highlighted ? 'var(--brand)' : 'var(--line)'}; border-radius: 0.75rem; padding: 1.5rem; display: flex; flex-direction: column; ${tier.highlighted ? 'box-shadow: 0 4px 20px rgb(79 70 229 / 0.12);' : ''}`}
+					>
+						<h2 style="font-size: 1.1rem;">{tier.name}</h2>
+						<p style="margin-top: 0.75rem;">
+							<span style="font-size: 2rem; font-weight: 800;">{tier.price}</span>
+							<span style="color: var(--muted); font-size: 0.9rem;"> {tier.per}</span>
+						</p>
+						<ul style="margin: 1.25rem 0 1.5rem 1.1rem; padding: 0; color: var(--muted); font-size: 0.95rem; flex: 1;">
+							{tier.features.map((f) => (
+								<li style="margin-top: 0.4rem;">{f}</li>
+							))}
+						</ul>
+						<a class={tier.highlighted ? 'btn' : 'btn ghost'} href="/docs/the-lawyer/plans" style="text-align: center;">
+							{tier.cta}
+						</a>
+					</div>
+				))}
+			</div>
+
+			<p style="color: var(--muted); font-size: 0.85rem; margin-top: 1.5rem;">
+				Prices exclude tax where applicable. Seats change any time from the customer portal;
+				AI usage beyond the included allowance meters transparently — or bring your own key and
+				pay your provider directly.
+			</p>
+		</section>
+	))}
+</Site>

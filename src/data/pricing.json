@@ -1,0 +1,59 @@
+{
+  "$comment": "The single source the pricing pages render from. Each tier's stripePriceId is filled from the Stripe dashboard per environment — placeholder amounts here are marketing copy, Stripe owns the real prices.",
+  "products": [
+    {
+      "id": "the-lawyer",
+      "name": "The Lawyer",
+      "tagline": "The matter-centric AI legal assistant: docketing, conflicts, drafting, billing — with an audit trail.",
+      "tiers": [
+        {
+          "id": "solo",
+          "name": "Solo",
+          "price": "$59",
+          "per": "per month, single user",
+          "stripePriceId": null,
+          "features": [
+            "Your own private workspace (full tenant isolation)",
+            "Matters, docketing with reminders, conflict checks",
+            "Clause library, playbook review, PDF drafting",
+            "Metered AI included — or bring your own API key",
+            "Email support"
+          ],
+          "cta": "Start with Solo"
+        },
+        {
+          "id": "team",
+          "name": "Team",
+          "price": "$49",
+          "per": "per seat / month",
+          "stripePriceId": null,
+          "highlighted": true,
+          "features": [
+            "Everything in Solo",
+            "Seats for the whole practice — add or remove any time",
+            "Roles and permissions per member; approval workflows",
+            "Ethical walls and the full audit trail",
+            "WhatsApp client intake",
+            "Priority support"
+          ],
+          "cta": "Start with Team"
+        },
+        {
+          "id": "dedicated",
+          "name": "Dedicated",
+          "price": "Custom",
+          "per": "your own environment",
+          "stripePriceId": null,
+          "features": [
+            "Everything in Team",
+            "Your own isolated Azure environment, provisioned automatically",
+            "Data residency: pick the region",
+            "Your keys in your Key Vault; optional bring-your-own subscription",
+            "Uptime SLA and onboarding assistance"
+          ],
+          "cta": "Talk to us"
+        }
+      ]
+    }
+  ]
+}

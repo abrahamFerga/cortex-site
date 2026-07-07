@@ -1,0 +1,75 @@
+---
+// The shared frame for the brand pages (landing, pricing, product pages). Docs pages use
+// Starlight's own layout — this one stays deliberately dependency-free: system fonts, a small
+// inline stylesheet, no CSS framework.
+interface Props {
+	title: string;
+	description?: string;
+}
+const { title, description = 'AI vertical products on the Cortex platform.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+		<style>
+			:root {
+				--ink: #0f172a;
+				--muted: #64748b;
+				--brand: #4f46e5;
+				--brand-dark: #4338ca;
+				--surface: #f8fafc;
+				--line: #e2e8f0;
+			}
+			* { box-sizing: border-box; margin: 0; }
+			body {
+				font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+				color: var(--ink);
+				background: white;
+				line-height: 1.6;
+			}
+			.wrap { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem; }
+			header.site {
+				display: flex; align-items: center; gap: 2rem;
+				padding: 1rem 1.5rem; border-bottom: 1px solid var(--line);
+				max-width: 64rem; margin: 0 auto;
+			}
+			header.site .logo { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; }
+			header.site nav { display: flex; gap: 1.25rem; margin-left: auto; }
+			header.site a { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+			header.site a:hover { color: var(--ink); }
+			main { padding: 3rem 0 5rem; }
+			footer.site {
+				border-top: 1px solid var(--line); color: var(--muted);
+				font-size: 0.85rem; padding: 1.5rem; text-align: center;
+			}
+			.btn {
+				display: inline-block; background: var(--brand); color: white;
+				padding: 0.65rem 1.4rem; border-radius: 0.5rem; text-decoration: none;
+				font-weight: 600;
+			}
+			.btn:hover { background: var(--brand-dark); }
+			.btn.ghost { background: transparent; color: var(--brand); border: 1px solid var(--brand); }
+		</style>
+	</head>
+	<body>
+		<header class="site">
+			<a href="/" style="text-decoration:none;color:inherit"><span class="logo">⬡ Cortex</span></a>
+			<nav>
+				<a href="/products/the-lawyer">Products</a>
+				<a href="/pricing">Pricing</a>
+				<a href="/docs/the-lawyer/getting-started">Docs</a>
+			</nav>
+		</header>
+		<main class="wrap">
+			<slot />
+		</main>
+		<footer class="site">
+			Cortex — AI vertical products, each its own system on one platform.
+		</footer>
+	</body>
+</html>

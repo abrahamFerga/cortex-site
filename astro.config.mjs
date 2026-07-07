@@ -5,6 +5,13 @@ import starlight from '@astrojs/starlight';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://cortex-platform.example',
+	// The Lawyer -> Casewell rebrand: old URLs keep working (static meta-refresh pages).
+	redirects: {
+		'/products/the-lawyer': '/products/casewell',
+		'/docs/the-lawyer/getting-started': '/docs/casewell/getting-started',
+		'/docs/the-lawyer/plans': '/docs/casewell/plans',
+		'/docs/the-lawyer/security': '/docs/casewell/security',
+	},
 	integrations: [
 		starlight({
 			title: 'Cortex',

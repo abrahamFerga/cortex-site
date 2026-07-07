@@ -2,8 +2,8 @@
   "$comment": "The single source the pricing pages render from. Each tier's stripePriceId is filled from the Stripe dashboard per environment — placeholder amounts here are marketing copy, Stripe owns the real prices.",
   "products": [
     {
-      "id": "the-lawyer",
-      "name": "The Lawyer",
+      "id": "casewell",
+      "name": "Casewell",
       "tagline": "The matter-centric AI legal assistant: docketing, conflicts, drafting, billing — with an audit trail.",
       "tiers": [
         {

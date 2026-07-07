@@ -1,64 +1,245 @@
 ---
 import Site from '../layouts/Site.astro';
 import pricing from '../data/pricing.json';
-const products = pricing.products;
+const lawyer = pricing.products.find((p) => p.id === 'the-lawyer')!;
 ---
 
-<Site title="Cortex — AI vertical products for real work">
-	<section style="padding: 3rem 0 2rem; text-align: center;">
-		<h1 style="font-size: 2.6rem; line-height: 1.15; letter-spacing: -0.03em;">
-			AI assistants that run a practice,<br />not just a chat window.
-		</h1>
-		<p style="max-width: 38rem; margin: 1.25rem auto 0; color: var(--muted); font-size: 1.15rem;">
-			Cortex products are domain systems: every action permission-checked before the model sees a
-			tool, every write approval-gated, every call audited. The AI does the work; you keep control.
-		</p>
-		<div style="margin-top: 2rem; display: flex; gap: 0.75rem; justify-content: center;">
-			<a class="btn" href="/pricing">See pricing</a>
-			<a class="btn ghost" href="/docs/the-lawyer/getting-started">Read the docs</a>
-		</div>
-	</section>
-
-	<section style="margin-top: 3rem;">
-		<h2 style="font-size: 1.4rem;">Products</h2>
-		<div style="display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); margin-top: 1rem;">
-			{products.map((p) => (
-				<a
-					href={`/products/${p.id}`}
-					style="border: 1px solid var(--line); border-radius: 0.75rem; padding: 1.5rem; text-decoration: none; color: inherit; display: block;"
-				>
-					<h3 style="font-size: 1.15rem;">{p.name}</h3>
-					<p style="color: var(--muted); margin-top: 0.5rem; font-size: 0.95rem;">{p.tagline}</p>
-				</a>
-			))}
-			<div style="border: 1px dashed var(--line); border-radius: 0.75rem; padding: 1.5rem; color: var(--muted);">
-				<h3 style="font-size: 1.15rem;">Your vertical</h3>
-				<p style="margin-top: 0.5rem; font-size: 0.95rem;">
-					Every product is its own system on the same platform — new verticals inherit the whole
-					security spine on day one.
+<Site title="Cortex — AI that runs the work, with controls you can audit">
+	<!-- ── Hero ─────────────────────────────────────────────────────────── -->
+	<section class="dark-band" style="overflow: hidden;">
+		<div class="wrap" style="padding-block: clamp(4rem, 9vw, 7rem); display: grid; gap: 3rem; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); align-items: center;">
+			<div class="rise">
+				<span class="kicker" style="color: #a5b4fc;">The AI platform for regulated work</span>
+				<h1 style="color: white;">
+					Your practice, run by AI.<br />
+					<span style="background: linear-gradient(90deg, #a5b4fc, #d8b4fe); -webkit-background-clip: text; background-clip: text; color: transparent;">Signed off by you.</span>
+				</h1>
+				<p class="lead" style="color: #a5b0c8; margin-top: 1.2rem; max-width: 34rem;">
+					Cortex products don't just chat — they docket deadlines, check conflicts, draft from
+					your playbook, and track the billing. Every action permission-checked before the AI
+					sees it, held for your approval, and written to an audit trail.
 				</p>
+				<div style="display: flex; gap: 0.8rem; margin-top: 2rem; flex-wrap: wrap;">
+					<a class="btn" href="/pricing">Get started in minutes</a>
+					<a class="btn ghost on-dark" href="/products/the-lawyer">See The Lawyer →</a>
+				</div>
+				<ul style="display: flex; gap: 1.4rem; margin-top: 2.2rem; list-style: none; flex-wrap: wrap; color: #94a3b8; font-size: 0.88rem;">
+					<li>✓ Live the moment you subscribe</li>
+					<li>✓ Bring your own AI key</li>
+					<li>✓ Cancel anytime, data kept 30 days</li>
+				</ul>
+			</div>
+
+			<!-- Product mockup: a real interaction shape, hand-drawn in CSS -->
+			<div class="rise-2" aria-hidden="true" style="min-width: 0;">
+				<div style="background: #101226; border: 1px solid rgb(255 255 255 / 0.12); border-radius: 18px; box-shadow: 0 40px 90px rgb(0 0 0 / 0.5); overflow: hidden; font-size: 0.86rem;">
+					<div style="display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1rem; border-bottom: 1px solid rgb(255 255 255 / 0.08); color: #94a3b8;">
+						<span style="width: 0.65rem; height: 0.65rem; border-radius: 50%; background: #f87171;"></span>
+						<span style="width: 0.65rem; height: 0.65rem; border-radius: 50%; background: #fbbf24;"></span>
+						<span style="width: 0.65rem; height: 0.65rem; border-radius: 50%; background: #34d399;"></span>
+						<span style="margin-left: 0.6rem; font-weight: 600; color: #cbd5e1;">The Lawyer · Vandelay acquisition</span>
+					</div>
+					<div style="padding: 1.1rem; display: grid; gap: 0.8rem;">
+						<div style="justify-self: end; background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; padding: 0.6rem 0.9rem; border-radius: 12px 12px 3px 12px; max-width: 85%;">
+							Opposing counsel filed today. The answer is due August 14 — and log the half hour I spent on the call.
+						</div>
+						<div style="justify-self: start; background: rgb(255 255 255 / 0.06); color: #dbe3f0; padding: 0.7rem 0.9rem; border-radius: 12px 12px 12px 3px; max-width: 90%;">
+							<span style="display: inline-block; font-size: 0.72rem; background: rgb(251 191 36 / 0.15); color: #fcd34d; border-radius: 999px; padding: 0.1rem 0.6rem; margin-bottom: 0.45rem;">used tool: add_deadline</span>
+							<span style="display: inline-block; font-size: 0.72rem; background: rgb(251 191 36 / 0.15); color: #fcd34d; border-radius: 999px; padding: 0.1rem 0.6rem; margin: 0 0 0.45rem 0.3rem;">used tool: log_time</span>
+							<br />Docketed <b style="color: white;">Answer due — Aug 14</b> on <i>Vandelay acquisition</i> with reminders at 7 days and 48 hours, and logged <b style="color: white;">0.5h</b> — "call with opposing counsel."
+						</div>
+						<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; background: rgb(79 70 229 / 0.12); border: 1px solid rgb(129 140 248 / 0.35); border-radius: 12px; padding: 0.65rem 0.9rem; color: #c7d2fe;">
+							<span style="font-size: 1rem;">🛡</span>
+							<span><b style="color: white;">Approval required</b> — file engagement letter on the matter</span>
+							<span style="margin-left: auto; display: flex; gap: 0.4rem;">
+								<span style="background: #34d399; color: #052e22; font-weight: 700; border-radius: 8px; padding: 0.2rem 0.7rem;">Approve</span>
+								<span style="background: rgb(255 255 255 / 0.09); color: #cbd5e1; border-radius: 8px; padding: 0.2rem 0.7rem;">Reject</span>
+							</span>
+						</div>
+						<div style="color: #64748b; font-size: 0.75rem; text-align: right;">every action above is now in the audit log · 312 tokens</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
 
-	<section style="margin-top: 3.5rem;">
-		<h2 style="font-size: 1.4rem;">Why teams trust it</h2>
-		<div style="display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); margin-top: 1rem;">
-			<div>
-				<h3 style="font-size: 1rem;">Security before the model</h3>
-				<p style="color: var(--muted); font-size: 0.95rem;">The model never sees a tool the signed-in user may not call. Writes wait for human approval.</p>
+	<!-- ── Differentiators (bento) ──────────────────────────────────────── -->
+	<section class="band">
+		<div class="wrap">
+			<span class="kicker">Why teams pick Cortex</span>
+			<h2 style="max-width: 32rem;">Assistants are easy.<br />Accountable assistants are the product.</h2>
+			<div class="grid cols-3" style="margin-top: 2.5rem;">
+				<div class="card">
+					<div class="icon">🔐</div>
+					<h3>Permission-checked before the AI</h3>
+					<p>The model never even sees an action the signed-in user isn't allowed to take. Roles and permissions are yours to shape — at runtime, per member.</p>
+				</div>
+				<div class="card">
+					<div class="icon">✍️</div>
+					<h3>You keep signature authority</h3>
+					<p>Anything that changes the record waits for a human approval, right in the conversation. The AI does the work; you sign off.</p>
+				</div>
+				<div class="card">
+					<div class="icon">📜</div>
+					<h3>An audit trail for everything</h3>
+					<p>Every tool call, sign-in, permission change, and token — append-only and readable by your admins. When compliance asks, you answer in minutes.</p>
+				</div>
+				<div class="card">
+					<div class="icon">🧠</div>
+					<h3>Your AI, your terms</h3>
+					<p>Run on metered AI with a hard monthly cap, or bring your own OpenAI, Azure, Anthropic, or Ollama key — switchable at runtime, stored write-only.</p>
+				</div>
+				<div class="card">
+					<div class="icon">🧱</div>
+					<h3>Isolation on your terms</h3>
+					<p>A fully isolated tenant from day one — or your own dedicated Azure environment in your region, provisioned automatically when you subscribe.</p>
+				</div>
+				<div class="card">
+					<div class="icon">🧩</div>
+					<h3>Specialists, not one bot</h3>
+					<p>Pick the drafting agent, the docketing clerk, or a whole workflow chain per conversation. Each one sees only the tools its job needs.</p>
+				</div>
 			</div>
-			<div>
-				<h3 style="font-size: 1rem;">Everything audited</h3>
-				<p style="color: var(--muted); font-size: 0.95rem;">Every tool call, every permission change, every token — in an append-only trail your admins can read.</p>
+		</div>
+	</section>
+
+	<!-- ── How it works ─────────────────────────────────────────────────── -->
+	<section class="band" style="background: var(--surface); border-block: 1px solid var(--line);">
+		<div class="wrap">
+			<span class="kicker">From card to working assistant</span>
+			<h2>Live before your coffee cools</h2>
+			<div class="grid cols-3" style="margin-top: 2.5rem;">
+				<div>
+					<div style="font-family: var(--mono); color: var(--brand); font-weight: 800; font-size: 1.6rem;">01</div>
+					<h3 style="margin-top: 0.4rem;">Subscribe</h3>
+					<p style="color: var(--muted); font-size: 0.95rem;">Pick a plan, name your workspace, pay. That's the whole form.</p>
+				</div>
+				<div>
+					<div style="font-family: var(--mono); color: var(--brand); font-weight: 800; font-size: 1.6rem;">02</div>
+					<h3 style="margin-top: 0.4rem;">We provision — automatically</h3>
+					<p style="color: var(--muted); font-size: 0.95rem;">Your isolated workspace (or dedicated Azure environment) is created by the payment itself. No sales call, no onboarding queue.</p>
+				</div>
+				<div>
+					<div style="font-family: var(--mono); color: var(--brand); font-weight: 800; font-size: 1.6rem;">03</div>
+					<h3 style="margin-top: 0.4rem;">Get to work</h3>
+					<p style="color: var(--muted); font-size: 0.95rem;">The sign-in link lands in your inbox. Open your first matter, docket your first deadline, invite the team.</p>
+				</div>
 			</div>
-			<div>
-				<h3 style="font-size: 1rem;">Your keys, your budget</h3>
-				<p style="color: var(--muted); font-size: 0.95rem;">Use metered AI with a hard monthly cap, or bring your own provider key — switchable at runtime.</p>
+		</div>
+	</section>
+
+	<!-- ── Security band ────────────────────────────────────────────────── -->
+	<section class="band dark-band">
+		<div class="wrap">
+			<span class="kicker" style="color: #a5b4fc;">Built for regulated work</span>
+			<h2 style="max-width: 36rem;">Security isn't a checkbox page.<br />It's the architecture.</h2>
+			<div class="grid cols-2" style="margin-top: 2.5rem;">
+				<div class="card">
+					<h3>Row-level tenant isolation</h3>
+					<p>Every row of your data carries your tenant id, enforced by the database layer on every query — by construction, not by convention.</p>
+				</div>
+				<div class="card">
+					<h3>Ethical walls that hold</h3>
+					<p>Restrict a matter and it vanishes from every tool, tab, and search for everyone outside the wall — wildcard permissions or not. Attestations are hash-chained.</p>
+				</div>
+				<div class="card">
+					<h3>Write-only secrets</h3>
+					<p>API keys and signing secrets go into an encrypted vault and never come back out — no screen, no API, no export ever shows them again.</p>
+				</div>
+				<div class="card">
+					<h3>Budgets that actually stop</h3>
+					<p>Hard monthly token caps per workspace: admins alerted at 80%, and the assistant pauses at 100% instead of overspending your money.</p>
+				</div>
 			</div>
+			<p style="margin-top: 2rem;">
+				<a href="/docs/the-lawyer/security" style="color: #a5b4fc; font-weight: 600;">Read the full security model →</a>
+			</p>
+		</div>
+	</section>
+
+	<!-- ── Product spotlight ────────────────────────────────────────────── -->
+	<section class="band">
+		<div class="wrap" style="display: grid; gap: 3rem; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); align-items: center;">
 			<div>
-				<h3 style="font-size: 1rem;">Isolation on your terms</h3>
-				<p style="color: var(--muted); font-size: 0.95rem;">From a private tenant to your own dedicated Azure environment, provisioned automatically.</p>
+				<span class="kicker">Flagship product</span>
+				<h2>The Lawyer</h2>
+				<p class="lead" style="margin-top: 1rem;">
+					An assistant organized the way a practice is: around matters. Intake with conflict
+					checks, docketing with reminders, drafting from your own clause library, time capture,
+					pre-bills — filed, cited, and audited.
+				</p>
+				<div style="display: flex; gap: 0.8rem; margin-top: 1.8rem; flex-wrap: wrap;">
+					<a class="btn" href="/products/the-lawyer">Explore The Lawyer</a>
+					<a class="btn ghost" href="/docs/the-lawyer/getting-started">Read the docs</a>
+				</div>
+			</div>
+			<div class="grid" style="gap: 0.9rem;">
+				{[
+					['⚖️', 'Conflict checks at intake, before a matter ever opens'],
+					['📅', 'Court dates docketed from conversation, with two-stage reminders'],
+					['📝', 'Drafts from your clause library — new language flagged for review'],
+					['⏱', '"Log half an hour on Vandelay" is a billable time entry'],
+					['💬', 'Clients reach you over WhatsApp; intake lands on the matter'],
+				].map(([emoji, text]) => (
+					<div style="display: flex; gap: 0.9rem; align-items: center; border: 1px solid var(--line); border-radius: 12px; padding: 0.9rem 1.1rem; background: var(--bg); box-shadow: var(--shadow-1);">
+						<span style="font-size: 1.3rem;">{emoji}</span>
+						<span style="font-size: 0.95rem; color: var(--ink-2);">{text}</span>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ── Pricing teaser ───────────────────────────────────────────────── -->
+	<section class="band" style="background: var(--surface); border-block: 1px solid var(--line);">
+		<div class="wrap" style="text-align: center;">
+			<span class="kicker">Simple, honest pricing</span>
+			<h2>Start solo. Grow to a team.<br />Graduate to your own cloud.</h2>
+			<div class="grid cols-3" style="margin-top: 2.5rem; text-align: left;">
+				{lawyer.tiers.map((tier) => (
+					<div class="card" style={tier.highlighted ? 'border-color: var(--brand); box-shadow: var(--shadow-2);' : ''}>
+						{tier.highlighted && <span style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand);">Most popular</span>}
+						<h3 style="margin-top: 0.3rem;">{tier.name}</h3>
+						<p style="margin-top: 0.6rem;"><span style="font-size: 1.9rem; font-weight: 800; color: var(--ink);">{tier.price}</span> <span style="font-size: 0.85rem;">{tier.per}</span></p>
+						<p style="margin-top: 0.6rem;">{tier.features[1] ?? tier.features[0]}</p>
+					</div>
+				))}
+			</div>
+			<a class="btn" href="/pricing" style="margin-top: 2.2rem;">Compare all plans</a>
+		</div>
+	</section>
+
+	<!-- ── FAQ ──────────────────────────────────────────────────────────── -->
+	<section class="band">
+		<div class="wrap" style="max-width: 46rem;">
+			<span class="kicker">Questions, answered</span>
+			<h2>FAQ</h2>
+			<div style="margin-top: 1.8rem; display: grid; gap: 0.6rem;">
+				{[
+					['Is this legal advice?', 'No — and the assistant is built to say so. Every draft is a starting template for attorney review; it never invents statutes or citations, and flags language outside your library as new for review.'],
+					['Where does my data live?', 'In your own isolated tenant — every row tagged with your tenant id and enforced at the database layer. Dedicated plans get their own database and compute in the Azure region you choose.'],
+					['Which AI models does it use?', 'Yours to decide: run on our metered AI with a hard monthly cap, or bring your own OpenAI, Azure OpenAI, Anthropic, or Ollama key. Keys are stored write-only and switchable at runtime.'],
+					['What happens if a payment fails?', 'Nothing is deleted. The workspace suspends while the payment retries; the moment it succeeds, everything resumes exactly where it was.'],
+					['Can I leave?', 'Any time, from the customer portal. Your workspace stays intact for 30 days after cancellation so you can export everything — then it is removed.'],
+					['How fast is setup, really?', 'The payment itself provisions the workspace — tenant, admin account, licensed modules, budgets. Shared plans are live in seconds; dedicated environments build themselves in your region while you get a status page.'],
+				].map(([q, a]) => (
+					<details style="border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.25rem; background: var(--bg);">
+						<summary style="font-weight: 650; cursor: pointer; color: var(--ink);">{q}</summary>
+						<p style="color: var(--muted); margin-top: 0.6rem; font-size: 0.95rem;">{a}</p>
+					</details>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- ── Final CTA ────────────────────────────────────────────────────── -->
+	<section class="band dark-band">
+		<div class="wrap" style="text-align: center;">
+			<h2 style="max-width: 30rem; margin-inline: auto;">The work is waiting.<br />The assistant is ready.</h2>
+			<p class="lead" style="color: #a5b0c8; margin-top: 1rem;">Live the moment you subscribe — no sales call required.</p>
+			<div style="display: flex; gap: 0.8rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+				<a class="btn" href="/pricing">Choose your plan</a>
+				<a class="btn ghost on-dark" href="/docs/the-lawyer/getting-started">Start with the docs</a>
 			</div>
 		</div>
 	</section>

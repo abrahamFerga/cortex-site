@@ -2,53 +2,113 @@
 import Site from '../../layouts/Site.astro';
 ---
 
-<Site title="The Lawyer — matter-centric AI legal assistant">
-	<section style="padding: 2rem 0; text-align: center;">
-		<h1 style="font-size: 2.4rem; letter-spacing: -0.03em;">The Lawyer</h1>
-		<p style="max-width: 40rem; margin: 1rem auto 0; color: var(--muted); font-size: 1.1rem;">
-			An AI assistant organized the way a practice is: around matters. It dockets deadlines, runs
-			conflict checks at intake, drafts from your clause library, tracks billable time, and files
-			every document on the matter — with an audit trail behind every action.
-		</p>
-		<div style="margin-top: 1.75rem;">
-			<a class="btn" href="/pricing">See pricing</a>
-			<a class="btn ghost" href="/docs/the-lawyer/getting-started" style="margin-left: 0.5rem;">Get started</a>
+<Site title="The Lawyer — the matter-centric AI legal assistant" description="Docketing, conflicts, drafting, time, and billing — run by AI, signed off by you, audited end to end.">
+	<!-- Hero -->
+	<section class="dark-band">
+		<div class="wrap rise" style="padding-block: clamp(3.5rem, 8vw, 6rem); text-align: center;">
+			<span class="kicker" style="color: #a5b4fc;">⚖️ The Lawyer</span>
+			<h1 style="color: white; max-width: 40rem; margin-inline: auto;">
+				The assistant that thinks in matters, not messages.
+			</h1>
+			<p class="lead" style="color: #a5b0c8; margin-top: 1.2rem; max-width: 36rem; margin-inline: auto;">
+				Intake with conflict checks. Deadlines that docket themselves from conversation. Drafts
+				from your clause library. Time captured as you mention it. Everything filed, cited, and
+				audited on the matter.
+			</p>
+			<div style="display: flex; gap: 0.8rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+				<a class="btn" href="/pricing">See pricing</a>
+				<a class="btn ghost on-dark" href="/docs/the-lawyer/getting-started">Get started</a>
+			</div>
 		</div>
 	</section>
 
-	<section style="margin-top: 2.5rem; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));">
-		<div style="border: 1px solid var(--line); border-radius: 0.75rem; padding: 1.25rem;">
-			<h3 style="font-size: 1rem;">Docketing that reminds</h3>
-			<p style="color: var(--muted); font-size: 0.95rem;">Mention a court date in chat and it's docketed with two-stage reminders. Nothing lives in anyone's memory.</p>
-		</div>
-		<div style="border: 1px solid var(--line); border-radius: 0.75rem; padding: 1.25rem;">
-			<h3 style="font-size: 1rem;">Conflicts at intake</h3>
-			<p style="color: var(--muted); font-size: 0.95rem;">Conflict checks against every recorded party before a matter opens, with a tamper-evident attestation chain.</p>
-		</div>
-		<div style="border: 1px solid var(--line); border-radius: 0.75rem; padding: 1.25rem;">
-			<h3 style="font-size: 1rem;">Drafting from your standards</h3>
-			<p style="color: var(--muted); font-size: 0.95rem;">Your clause library and negotiation playbook — the assistant drafts from them, reviews against them, and files the PDF on the matter.</p>
-		</div>
-		<div style="border: 1px solid var(--line); border-radius: 0.75rem; padding: 1.25rem;">
-			<h3 style="font-size: 1rem;">Ethical walls that hold</h3>
-			<p style="color: var(--muted); font-size: 0.95rem;">A walled matter vanishes from every tool, tab, and search for everyone outside the wall — wildcard permissions or not.</p>
-		</div>
-		<div style="border: 1px solid var(--line); border-radius: 0.75rem; padding: 1.25rem;">
-			<h3 style="font-size: 1rem;">Time and pre-bills</h3>
-			<p style="color: var(--muted); font-size: 0.95rem;">"Log half an hour on Vandelay" is a time entry. Pre-bills export to PDF, filed on the matter for review.</p>
-		</div>
-		<div style="border: 1px solid var(--line); border-radius: 0.75rem; padding: 1.25rem;">
-			<h3 style="font-size: 1rem;">Client intake over WhatsApp</h3>
-			<p style="color: var(--muted); font-size: 0.95rem;">Clients message like they already do; intake lands in the matter workspace with documents attached.</p>
+	<!-- A day with it -->
+	<section class="band">
+		<div class="wrap">
+			<span class="kicker">A Tuesday, with The Lawyer</span>
+			<h2 style="max-width: 34rem;">Say it once. It's docketed, logged, and filed.</h2>
+			<div class="grid cols-2" style="margin-top: 2.5rem;">
+				{[
+					['9:04', '“Run a conflict check on Meridian Holdings”', 'Checked against every recorded party across your matters — result reported, attestation hash-chained, before the matter opens.'],
+					['9:12', '“Open the matter and prepare the engagement letter”', 'Matter created, parties recorded, the letter drafted from YOUR clauses, rendered to PDF, and held for your approval before filing.'],
+					['11:40', '“The answer is due August 14”', 'Docketed with reminders at 7 days and 48 hours. Deadlines drive notifications — nothing lives in anyone’s memory.'],
+					['14:25', '“Log half an hour on Vandelay — call with opposing counsel”', 'A billable time entry, captured in the moment it’s mentioned. Pre-bills export to PDF, filed on the matter for review.'],
+					['16:50', '“Review this contract against our playbook”', 'Every rule checked, every finding cited to the file. New language flagged as new — never silently invented.'],
+					['17:30', '“Brief me on where Meridian stands”', 'One look: parties, deadlines, tasks, hours, documents. The overview your morning coffee deserves.'],
+				].map(([time, quote, result]) => (
+					<div class="card">
+						<div style="font-family: var(--mono); color: var(--brand); font-weight: 700; font-size: 0.85rem;">{time}</div>
+						<h3 style="margin-top: 0.4rem;">{quote}</h3>
+						<p style="margin-top: 0.4rem;">{result}</p>
+					</div>
+				))}
+			</div>
 		</div>
 	</section>
 
-	<section style="margin-top: 3rem; border: 1px solid var(--line); border-radius: 0.75rem; padding: 1.5rem; background: var(--surface);">
-		<h2 style="font-size: 1.2rem;">Not legal advice — leverage</h2>
-		<p style="color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem;">
-			Every draft is a starting template for attorney review. The assistant never invents statutes
-			or citations, flags anything outside your library as new language, and recommends review by
-			a licensed attorney — by design, in its instructions, on every matter.
-		</p>
+	<!-- Guardrails -->
+	<section class="band" style="background: var(--surface); border-block: 1px solid var(--line);">
+		<div class="wrap" style="display: grid; gap: 3rem; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); align-items: center;">
+			<div>
+				<span class="kicker">Built for a profession with rules</span>
+				<h2>Leverage, not liability.</h2>
+				<p class="lead" style="margin-top: 1rem;">
+					Every draft is a starting template for attorney review. The assistant never invents
+					statutes or citations, flags language outside your library, and recommends licensed
+					review — by design, in its instructions, on every matter.
+				</p>
+			</div>
+			<div class="grid" style="gap: 0.9rem;">
+				{[
+					['🧱', 'Ethical walls', 'A restricted matter vanishes from every tool, tab, and search for everyone outside the wall.'],
+					['🛡', 'Approval-gated writes', 'Filing, closing, sending — held for a human. Time capture is the one deliberate exception.'],
+					['📜', 'Tamper-evident attestations', 'Conflict-check attestations are hash-chained; the record shows if anyone touched it.'],
+					['👥', 'Roles your admin shapes', 'Paralegal, associate, partner — permission baselines are yours to edit, per workspace.'],
+				].map(([emoji, title, text]) => (
+					<div style="display: flex; gap: 0.9rem; border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.2rem; background: var(--bg); box-shadow: var(--shadow-1);">
+						<span style="font-size: 1.25rem;">{emoji}</span>
+						<div>
+							<h3 style="font-size: 0.98rem;">{title}</h3>
+							<p style="color: var(--muted); font-size: 0.9rem;">{text}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Channels + composition -->
+	<section class="band">
+		<div class="wrap">
+			<div class="grid cols-3">
+				<div class="card">
+					<div class="icon">💬</div>
+					<h3>Clients where they already are</h3>
+					<p>Intake over WhatsApp: clients message like they always do; documents and details land on the matter, conflict-checked.</p>
+				</div>
+				<div class="card">
+					<div class="icon">🧩</div>
+					<h3>Specialists on demand</h3>
+					<p>Switch to the drafting agent or the docketing clerk per conversation — each sees only its own tools. Chain them as workflows.</p>
+				</div>
+				<div class="card">
+					<div class="icon">📚</div>
+					<h3>Your knowledge, cited</h3>
+					<p>Index a matter's documents and ask questions with quoted, cited answers — walls and permissions enforced inside search too.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="band dark-band">
+		<div class="wrap" style="text-align: center;">
+			<h2 style="max-width: 32rem; margin-inline: auto;">Open your first matter today.</h2>
+			<p class="lead" style="color: #a5b0c8; margin-top: 1rem;">Solo, Team, or your own dedicated cloud — live the moment you subscribe.</p>
+			<div style="display: flex; gap: 0.8rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+				<a class="btn" href="/pricing">Choose a plan</a>
+				<a class="btn ghost on-dark" href="/docs/the-lawyer/getting-started">Read the docs</a>
+			</div>
+		</div>
 	</section>
 </Site>
